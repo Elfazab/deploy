@@ -112,7 +112,7 @@ const ExchangeRates = () => {
                   <th>Currency Code</th>
                   <th>Buying Rate</th>
                   <th>Selling Rate</th>
-                  <th>Last Updated</th>
+                  <th>Source Last Updated</th>
                   <th>Updated At</th>
                 </tr>
               </thead>
