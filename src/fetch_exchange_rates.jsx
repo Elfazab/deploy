@@ -47,6 +47,9 @@ const ExchangeRates = () => {
     return acc;
   }, {});
 
+  // Sort grouped data by bank name
+  const sortedBankNames = Object.keys(groupedData).sort();
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -100,7 +103,7 @@ const ExchangeRates = () => {
     <div>
       <h1>Exchange Rates</h1>
       <div className="table-grid">
-        {Object.entries(groupedData).map(([bankName, rates]) => (
+        {sortedBankNames.map((bankName) => (
           <div key={bankName} className="table-container">
             <h2>{bankName}</h2>
             <table>
@@ -109,20 +112,18 @@ const ExchangeRates = () => {
                   <th>Currency Code</th>
                   <th>Buying Rate</th>
                   <th>Selling Rate</th>
-                  <th>Source_last_updated</th>
+                  <th>Last Updated</th>
                   <th>Updated At</th>
                 </tr>
               </thead>
               <tbody>
-                {rates.map((rate) => (
+                {groupedData[bankName].map((rate) => (
                   <tr key={rate.id}>
                     <td>{rate.currencies?.currency_code}</td>
                     <td>{rate.buying_rate}</td>
                     <td>{rate.selling_rate}</td>
-                    <td>{formatDate(rate.last_updated)}</td>{" "}
-                    {/* Display only date for last_updated */}
-                    <td>{formatDateTime(rate.updated_at)}</td>{" "}
-                    {/* Display date and time for updated_at */}
+                    <td>{formatDate(rate.last_updated)}</td>
+                    <td>{formatDateTime(rate.updated_at)}</td>
                   </tr>
                 ))}
               </tbody>
