@@ -51,7 +51,11 @@ const ExchangeRates = () => {
   const sortedBankNames = Object.keys(groupedData).sort();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loading-spinner-container">
+        <div className="loading-spinner"></div> {/* Center the spinner */}
+      </div>
+    );
   }
 
   if (error) {
