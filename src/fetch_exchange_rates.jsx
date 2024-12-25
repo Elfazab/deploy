@@ -2,10 +2,11 @@ import { createClient } from "@supabase/supabase-js";
 import React, { useEffect, useState } from "react";
 
 // Initialize Supabase client
-const supabaseUrl = "https://qurekquvkfuesoccxxfm.supabase.co"; // Replace with your Supabase URL
+const supabaseUrl = "https://qurekquvkfuesoccxxfm.supabase.co";
 const supabaseAnonKey =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1cmVrcXV2a2Z1ZXNvY2N4eGZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMyMDI2MDgsImV4cCI6MjA0ODc3ODYwOH0.op8lICHjdf_qdrUpMTHG0G1KFh6vgaKfvjJGuSDBd48"; // Replace with your Supabase Anon Key
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1cmVrcXV2a2Z1ZXNvY2N4eGZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzMyMDI2MDgsImV4cCI6MjA0ODc3ODYwOH0.op8lICHjdf_qdrUpMTHG0G1KFh6vgaKfvjJGuSDBd48";
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
+const BUCKET_URL = `${supabaseUrl}/storage/v1/object/public/logos_and_flags/`;
 
 const ExchangeRates = () => {
   const [data, setData] = useState([]);
@@ -21,8 +22,8 @@ const ExchangeRates = () => {
           selling_rate,
           last_updated,
           updated_at,
-          banks (bank_name),
-          currencies (currency_code)
+          banks (bank_name, logo_url),
+          currencies (currency_code, flag_url)
         `);
 
       if (error) {
@@ -47,13 +48,12 @@ const ExchangeRates = () => {
     return acc;
   }, {});
 
-  // Sort grouped data by bank name
   const sortedBankNames = Object.keys(groupedData).sort();
 
   if (loading) {
     return (
       <div className="loading-spinner-container">
-        <div className="loading-spinner"></div> {/* Center the spinner */}
+        <div className="loading-spinner"></div>
       </div>
     );
   }
@@ -100,7 +100,7 @@ const ExchangeRates = () => {
     };
     const formattedDate = date.toLocaleDateString("en-US", optionsDate);
     const formattedTime = date.toLocaleTimeString("en-US", optionsTime);
-    return `${formattedDate} ${formattedTime}`; // Combine date and time
+    return `${formattedDate} ${formattedTime}`;
   };
 
   return (
@@ -110,6 +110,13 @@ const ExchangeRates = () => {
         {sortedBankNames.map((bankName) => (
           <div key={bankName} className="table-container">
             <h2>{bankName}</h2>
+            {groupedData[bankName][0]?.banks.logo_url && (
+              <img
+                src={`${BUCKET_URL}/${groupedData[bankName][0].banks.logo_url}`}
+                alt={`${bankName} logo`}
+                style={{ width: "50px", height: "auto" }}
+              />
+            )}
             <table>
               <thead>
                 <tr>
@@ -123,7 +130,20 @@ const ExchangeRates = () => {
               <tbody>
                 {groupedData[bankName].map((rate) => (
                   <tr key={rate.id}>
-                    <td>{rate.currencies?.currency_code}</td>
+                    <td>
+                      {rate.currencies?.flag_url && (
+                        <img
+                          src={`${BUCKET_URL}/${rate.currencies.flag_url}`}
+                          alt={`${rate.currencies.currency_code} flag`}
+                          style={{
+                            width: "20px",
+                            height: "auto",
+                            marginRight: "5px",
+                          }}
+                        />
+                      )}
+                      {rate.currencies?.currency_code}
+                    </td>
                     <td>{rate.buying_rate}</td>
                     <td>{rate.selling_rate}</td>
                     <td>{formatDate(rate.last_updated)}</td>
