@@ -109,14 +109,21 @@ const ExchangeRates = () => {
       <div className="table-grid">
         {sortedBankNames.map((bankName) => (
           <div key={bankName} className="table-container">
-            <h2>{bankName}</h2>
-            {groupedData[bankName][0]?.banks.logo_url && (
-              <img
-                src={`${BUCKET_URL}/${groupedData[bankName][0].banks.logo_url}`}
-                alt={`${bankName} logo`}
-                style={{ width: "50px", height: "auto" }}
-              />
-            )}
+            <div className="bank-header">
+              {groupedData[bankName][0]?.banks.logo_url && (
+                <img
+                  src={`${BUCKET_URL}/${groupedData[bankName][0].banks.logo_url}`}
+                  alt={`${bankName} logo`}
+                  style={{
+                    width: "50px",
+                    height: "auto",
+                    borderRadius: "50%",
+                    marginRight: "10px",
+                  }}
+                />
+              )}
+              <h2>{bankName}</h2>
+            </div>
             <table>
               <thead>
                 <tr>

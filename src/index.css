@@ -16,60 +16,6 @@ h2 {
   color: #ffffff;
 }
 
-form {
-  background: #1e1e1e;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #ffffff;
-}
-
-input[type="text"],
-input[type="number"],
-input[type="date"],
-select {
-  width: 50%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #444;
-  border-radius: 4px;
-  background-color: #333;
-  color: #ffffff;
-  box-sizing: border-box;
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus,
-input[type="date"]:focus,
-select:focus {
-  border-color: #e68200;
-  outline: none;
-}
-
-button {
-  background-color: #e68200;
-  color: white;
-  padding: 10px;
-  margin: 2px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 12px;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #ffdaa9;
-  color: #000000;
-}
-
 .table-grid {
   display: grid; /* Use grid layout */
   grid-template-columns: repeat(2, 1fr); /* Two columns */
@@ -82,6 +28,19 @@ button:hover {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   padding: 15px;
   display: block; /* Allow natural height */
+}
+
+.bank-header {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  margin-bottom: 10px; /* Space between header and table */
+}
+
+.bank-header h2 {
+  margin: 0; /* Remove default margin */
+  color: #ffffff; /* Ensure text color is consistent */
+  text-align: center; /* Center text */
 }
 
 table {
@@ -106,7 +65,7 @@ tr:hover {
   background-color: #333;
 }
 
-/* LoadingSpinner.css */
+/* Loading spinner styles */
 .loading-spinner-container {
   display: flex;
   justify-content: center; /* Center horizontally */
@@ -138,19 +97,12 @@ tr:hover {
     grid-template-columns: 1fr; /* Stack tables on small screens */
   }
 
-  form {
+  .table-container {
     padding: 15px;
   }
 
-  input[type="text"],
-  input[type="number"],
-  input[type="date"],
-  select {
-    padding: 8px;
-  }
-
-  button {
-    padding: 8px;
-    font-size: 14px;
+  h1,
+  h2 {
+    font-size: 1.5em; /* Adjust font size for smaller screens */
   }
 }
