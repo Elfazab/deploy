@@ -22,6 +22,7 @@ const ExchangeRates = () => {
           selling_rate,
           last_updated,
           updated_at,
+          data_fetched_date,
           banks (bank_name, logo_url),
           currencies (currency_code, flag_url)
         `);
@@ -39,16 +40,28 @@ const ExchangeRates = () => {
     fetchData();
   }, []);
 
+  // Group data by data_fetched_date
   const groupedData = data.reduce((acc, rate) => {
-    const bankName = rate.banks?.bank_name || "Unknown Bank";
-    if (!acc[bankName]) {
-      acc[bankName] = [];
+    const fetchedDate = new Date(rate.data_fetched_date).toLocaleDateString(
+      "en-US"
+    );
+
+    if (!acc[fetchedDate]) {
+      acc[fetchedDate] = {};
     }
-    acc[bankName].push(rate);
+
+    const bankName = rate.banks?.bank_name || "Unknown Bank";
+    if (!acc[fetchedDate][bankName]) {
+      acc[fetchedDate][bankName] = [];
+    }
+
+    acc[fetchedDate][bankName].push(rate);
     return acc;
   }, {});
 
-  const sortedBankNames = Object.keys(groupedData).sort();
+  const sortedFetchedDates = Object.keys(groupedData).sort(
+    (a, b) => new Date(b) - new Date(a)
+  );
 
   if (loading) {
     return (
@@ -62,31 +75,8 @@ const ExchangeRates = () => {
     return <div>Error: {error}</div>;
   }
 
-  const formatDate = (dateString) => {
-    if (!dateString) {
-      return "Date not found";
-    }
-    const date = new Date(dateString);
-    if (isNaN(date)) {
-      return "Date not found";
-    }
-    const options = {
-      weekday: "short",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    return date.toLocaleDateString("en-US", options);
-  };
-
   const formatDateTime = (dateString) => {
-    if (!dateString) {
-      return "Date not found";
-    }
     const date = new Date(dateString);
-    if (isNaN(date)) {
-      return "Date not found";
-    }
     const optionsDate = {
       weekday: "short",
       year: "numeric",
@@ -106,62 +96,69 @@ const ExchangeRates = () => {
   return (
     <div>
       <h1>Exchange Rates</h1>
-      <div className="table-grid">
-        {sortedBankNames.map((bankName) => (
-          <div key={bankName} className="table-container">
-            <div className="bank-header">
-              {groupedData[bankName][0]?.banks.logo_url && (
-                <img
-                  src={`${BUCKET_URL}/${groupedData[bankName][0].banks.logo_url}`}
-                  alt={`${bankName} logo`}
-                  style={{
-                    width: "50px",
-                    height: "auto",
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                  }}
-                />
-              )}
-              <h2>{bankName}</h2>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Currency Code</th>
-                  <th>Buying Rate</th>
-                  <th>Selling Rate</th>
-                  <th>Source Last Updated</th>
-                  <th>Updated At</th>
-                </tr>
-              </thead>
-              <tbody>
-                {groupedData[bankName].map((rate) => (
-                  <tr key={rate.id}>
-                    <td>
-                      {rate.currencies?.flag_url && (
-                        <img
-                          src={`${BUCKET_URL}/${rate.currencies.flag_url}`}
-                          alt={`${rate.currencies.currency_code} flag`}
-                          style={{
-                            width: "20px",
-                            height: "auto",
-                            marginRight: "5px",
-                          }}
-                        />
-                      )}
-                      {rate.currencies?.currency_code}
-                    </td>
-                    <td>{rate.buying_rate}</td>
-                    <td>{rate.selling_rate}</td>
-                    <td>{formatDate(rate.last_updated)}</td>
-                    <td>{formatDateTime(rate.updated_at)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      {sortedFetchedDates.map((fetchedDate) => (
+        <div key={fetchedDate}>
+          <h2>Data Fetched Date: {fetchedDate}</h2>
+          <div className="table-grid">
+            {Object.keys(groupedData[fetchedDate])
+              .sort()
+              .map((bankName) => (
+                <div key={bankName} className="table-container">
+                  <div className="bank-header">
+                    {groupedData[fetchedDate][bankName][0]?.banks.logo_url && (
+                      <img
+                        src={`${BUCKET_URL}/${groupedData[fetchedDate][bankName][0].banks.logo_url}`}
+                        alt={`${bankName} logo`}
+                        style={{
+                          width: "50px",
+                          height: "auto",
+                          borderRadius: "50%",
+                          marginRight: "10px",
+                        }}
+                      />
+                    )}
+                    <h3>{bankName}</h3>
+                  </div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Currency Code</th>
+                        <th>Buying Rate</th>
+                        <th>Selling Rate</th>
+                        <th>Source Last Updated</th>
+                        <th>Updated At</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {groupedData[fetchedDate][bankName].map((rate) => (
+                        <tr key={rate.id}>
+                          <td>
+                            {rate.currencies?.flag_url && (
+                              <img
+                                src={`${BUCKET_URL}/${rate.currencies.flag_url}`}
+                                alt={`${rate.currencies.currency_code} flag`}
+                                style={{
+                                  width: "20px",
+                                  height: "auto",
+                                  marginRight: "5px",
+                                }}
+                              />
+                            )}
+                            {rate.currencies?.currency_code}
+                          </td>
+                          <td>{rate.buying_rate}</td>
+                          <td>{rate.selling_rate}</td>
+                          <td>{formatDateTime(rate.last_updated)}</td>
+                          <td>{formatDateTime(rate.updated_at)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };
