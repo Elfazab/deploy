@@ -1,0 +1,39 @@
+/* About.css */
+
+.about-container {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  max-width: 900px;
+  margin: 50px auto;
+  text-align: left;
+}
+
+.about-container h2,
+.about-container h3 {
+  color: #e68200;
+  text-align: center;
+}
+
+.about-section {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.about-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-section li {
+  margin: 10px 0;
+}
+
+.about-section li strong {
+  color: #e68200;
+}

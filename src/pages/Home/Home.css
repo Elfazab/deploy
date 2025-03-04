@@ -1,0 +1,79 @@
+/* Home.css */
+
+.navbar {
+  background-color: #333;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  color: #ffffff;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+
+.navbar-links {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-links li {
+  display: inline;
+}
+
+.navbar-links a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+.home-container {
+  background-color: #1e1e1e; /* Dark background for contrast */
+  border-radius: 10px;
+  padding: 30px;
+  max-width: 1000px; /* Limit max width for better readability */
+  margin: 50px auto; /* Center the container */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  text-align: center; /* Center text */
+}
+
+.welcome-title {
+  color: #ffffff;
+  font-size: 2.5em;
+  margin-bottom: 15px;
+}
+
+.description {
+  color: #e0e0e0;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.view-rates-link {
+  text-decoration: none; /* Remove underline from link */
+}
+
+.view-rates-button {
+  background-color: #e68200; /* Button color */
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+}
+
+.view-rates-button:hover {
+  background-color: #d57e00; /* Darker button color on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}

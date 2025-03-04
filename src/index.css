@@ -3,22 +3,18 @@ body {
   background-color: #121212;
   color: #e0e0e0;
   margin: 0;
-  padding: 20px;
+  padding: 40px;
 }
 
-h1 {
-  color: #ffffff;
-  text-align: center;
-}
-
+h1,
 h2 {
-  text-align: center;
   color: #ffffff;
+  text-align: center;
 }
 
 .table-grid {
-  display: grid; /* Use grid layout */
-  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
@@ -27,20 +23,40 @@ h2 {
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   padding: 15px;
-  display: block; /* Allow natural height */
+  display: block;
 }
 
 .bank-header {
-  display: flex; /* Use flexbox */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  margin-bottom: 10px; /* Space between header and table */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2c2c2c;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+}
+
+.bank-header:hover {
+  background-color: #616161;
 }
 
 .bank-header h2 {
-  margin: 0; /* Remove default margin */
-  color: #ffffff; /* Ensure text color is consistent */
-  text-align: center; /* Center text */
+  margin: 0;
+}
+
+.bank-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+.bank-name {
+  font-size: 1.5em;
+  margin: 0;
 }
 
 table {
@@ -68,17 +84,17 @@ tr:hover {
 /* Loading spinner styles */
 .loading-spinner-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Full height of the viewport */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .loading-spinner {
-  border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid #e64900; /* Orange */
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #e64900;
   border-radius: 50%;
-  width: 50px; /* Size of the spinner */
-  height: 50px; /* Size of the spinner */
+  width: 50px;
+  height: 50px;
   animation: spin 1s linear infinite;
 }
 
@@ -94,7 +110,7 @@ tr:hover {
 /* Responsive layout for smaller screens */
 @media (max-width: 600px) {
   .table-grid {
-    grid-template-columns: 1fr; /* Stack tables on small screens */
+    grid-template-columns: 1fr;
   }
 
   .table-container {
@@ -103,6 +119,6 @@ tr:hover {
 
   h1,
   h2 {
-    font-size: 1.5em; /* Adjust font size for smaller screens */
+    font-size: 1.5em;
   }
 }
