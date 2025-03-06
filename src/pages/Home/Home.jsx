@@ -7,7 +7,9 @@ import "./Home.css"; // Import the CSS file
 const Home = () => (
   <div className="home-container">
     <Navbar />
-    <h2 className="welcome-title">Welcome to the Currency Exchange App</h2>
+    <h2 className="welcome-title">
+      Welcome to the All Ethiopian Banks Currency Exchange App
+    </h2>
     <p className="description">
       Check the latest exchange rates to make smarter choices for travel,
       business, or personal use.
