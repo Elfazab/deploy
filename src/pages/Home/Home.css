@@ -3,7 +3,7 @@
   border-radius: 10px;
   padding: 30px;
   max-width: 1000px; /* Limit max width for better readability */
-  margin: 50px auto; /* Center the container */
+  margin: 1px auto; /* Center the container */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   text-align: center; /* Center text */
 }

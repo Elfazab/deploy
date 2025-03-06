@@ -3,7 +3,7 @@ body {
   background-color: #121212;
   color: #e0e0e0;
   margin: 0;
-  padding: 40px;
+  padding: 20px;
 }
 
 h1,
@@ -105,6 +105,34 @@ tr:hover {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/*drop down */
+/* Style for the dropdown container */
+
+/* Dropdown styling */
+#date-select {
+  width: 120px; /* Set a fixed width for the dropdown */
+  padding: 15px; /* Reduced padding for a smaller look */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #333; /* Dark background for the dropdown */
+  color: #ffffff; /* White text color */
+  font-size: 0.9em; /* Smaller font size */
+  appearance: none; /* Remove default dropdown arrow */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="white"><polygon points="0,0 10,0 5,5"/></svg>'); /* Custom dropdown arrow */
+  background-repeat: no-repeat; /* Prevent repeating the background image */
+  background-position: right 10px center; /* Position the arrow */
+  background-size: 10px; /* Size of the dropdown arrow */
+  margin-left: 50px;
+}
+
+/* Dropdown hover and focus styles */
+#date-select:hover,
+#date-select:focus {
+  border-color: #e68200; /* Change border color on hover/focus */
+  outline: none; /* Remove outline */
+  cursor: pointer; /* Change cursor to pointer */
 }
 
 /* Responsive layout for smaller screens */
