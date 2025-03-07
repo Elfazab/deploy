@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { formatDateTime } from "../utils/dateUtils";
 
-const RateTable = ({ rates, bucketUrl }) => {
+const RateTable = ({ rates, bucketUrl, updatedDate }) => {
   const [showAll, setShowAll] = useState(false); // State to manage visibility of all rates
 
   // Determine how many rows to display based on showAll state
@@ -9,14 +8,22 @@ const RateTable = ({ rates, bucketUrl }) => {
 
   return (
     <div>
+      <div
+        style={{
+          marginBottom: "10px",
+          fontWeight: "bold",
+          fontSize: "smaller",
+          color: "#777",
+        }}
+      >
+        Data Updated Date: {updatedDate}
+      </div>
       <table>
         <thead>
           <tr>
             <th>Currency Code</th>
             <th>Buying Rate</th>
             <th>Selling Rate</th>
-            <th>Source Last Updated</th>
-            <th>Updated At</th>
           </tr>
         </thead>
         <tbody>
@@ -38,12 +45,6 @@ const RateTable = ({ rates, bucketUrl }) => {
               </td>
               <td>{rate.buying_rate}</td>
               <td>{rate.selling_rate}</td>
-              <td>
-                {rate.last_updated
-                  ? formatDateTime(rate.last_updated)
-                  : "Date Not Found"}
-              </td>
-              <td>{formatDateTime(rate.updated_at)}</td>
             </tr>
           ))}
         </tbody>

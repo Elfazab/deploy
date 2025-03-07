@@ -108,6 +108,7 @@ const ExchangeRates = () => {
                 <RateTable
                   rates={groupedData[selectedDate][bankName]}
                   bucketUrl={BUCKET_URL}
+                  updatedDate={selectedDate} // Pass the selected date here
                 />
               </div>
             ))}
