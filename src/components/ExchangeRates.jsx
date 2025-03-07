@@ -95,7 +95,7 @@ const ExchangeRates = () => {
 
       {/* Display data for the selected date */}
       <div>
-        <h2>Data Updated Date: {selectedDate}</h2>
+        {/* <h2>Data Updated Date: {selectedDate}</h2> */}
         <div className="table-grid">
           {Object.keys(groupedData[selectedDate] || {})
             .sort()
