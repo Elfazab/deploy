@@ -21,9 +21,9 @@ const RateTable = ({ rates, bucketUrl, updatedDate }) => {
       <table>
         <thead>
           <tr>
-            <th>Currency Code</th>
-            <th>Buying Rate</th>
-            <th>Selling Rate</th>
+            <th>Currency</th>
+            <th>Buying</th>
+            <th>Selling</th>
           </tr>
         </thead>
         <tbody>

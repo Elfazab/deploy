@@ -1,13 +1,35 @@
-.home-container {
-  background-color: #1e1e1e; /* Dark background for contrast */
-  border-radius: 10px;
-  padding: 30px;
-  max-width: 1000px; /* Limit max width for better readability */
-  margin: 1px auto; /* Center the container */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  text-align: center; /* Center text */
+/* src/pages/Home.css */
+
+.main-home-container {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between columns */
+  padding: 20px; /* Padding around the container */
 }
 
+.left-column,
+.right-column {
+  width: 15%; /* Set width for left and right columns */
+  background-color: #1e1e1e;
+  color: white; /* Text color */
+  padding: 20px; /* Padding inside the columns */
+  border-radius: 8px; /* Rounded corners */
+  text-align: center; /* Center text and images */
+  margin: 0 20px;
+}
+
+.home-content {
+  width: 75%; /* Main content area width */
+  padding: 20px; /* Padding inside the main content area */
+  background-color: #1e1e1e; /* Slightly darker background for content */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.column-image {
+  max-width: 100%; /* Make image responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 5px; /* Optional: rounded corners for images */
+  margin-bottom: 10px; /* Space between image and content */
+}
 .welcome-title {
   color: #ffffff;
   font-size: 2.5em;
@@ -33,6 +55,7 @@
   font-size: 1.1em;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+  margin: 40px 10px;
 }
 
 .view-rates-button:hover {

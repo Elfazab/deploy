@@ -79,39 +79,63 @@ const ExchangeRates = () => {
     <div>
       <Navbar />
       <h1>Exchange Rates</h1>
-      <div>
-        <select
-          id="date-select"
-          value={selectedDate}
-          onChange={handleDateChange}
-        >
-          {dates.sort().map((date) => (
-            <option key={date} value={date}>
-              {date}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Display data for the selected date */}
-      <div>
-        {/* <h2>Data Updated Date: {selectedDate}</h2> */}
-        <div className="table-grid">
-          {Object.keys(groupedData[selectedDate] || {})
-            .sort()
-            .map((bankName) => (
-              <div key={bankName} className="table-container">
-                <BankHeader
-                  bankName={bankName}
-                  logoUrl={`${BUCKET_URL}/${groupedData[selectedDate][bankName][0].banks.logo_url}`}
-                />
-                <RateTable
-                  rates={groupedData[selectedDate][bankName]}
-                  bucketUrl={BUCKET_URL}
-                  updatedDate={selectedDate} // Pass the selected date here
-                />
-              </div>
-            ))}
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        {" "}
+        <div className="left-column">
+          <img
+            src="https://i.pinimg.com/736x/93/9a/41/939a415185c39dea80c0ee5c9a0c297e.jpg" // Left Column Image
+            alt="Left Column"
+            className="column-image"
+          />
+          Left Column Content
+        </div>
+        <div>
+          <div>
+            <select
+              id="date-select"
+              value={selectedDate}
+              onChange={handleDateChange}
+            >
+              {dates.sort().map((date) => (
+                <option key={date} value={date}>
+                  {date}
+                </option>
+              ))}
+            </select>
+          </div>{" "}
+          {/* Display data for the selected date */}
+          <div>
+            {/* <h2>Data Updated Date: {selectedDate}</h2> */}
+            <div className="table-grid">
+              {Object.keys(groupedData[selectedDate] || {})
+                .sort()
+                .map((bankName) => (
+                  <div key={bankName} className="table-container">
+                    <BankHeader
+                      bankName={bankName}
+                      logoUrl={`${BUCKET_URL}/${groupedData[selectedDate][bankName][0].banks.logo_url}`}
+                    />
+                    <RateTable
+                      rates={groupedData[selectedDate][bankName]}
+                      bucketUrl={BUCKET_URL}
+                      updatedDate={selectedDate} // Pass the selected date here
+                    />
+                  </div>
+                ))}
+            </div>
+          </div>{" "}
+        </div>
+        <div className="right-column">
+          <img
+            src="https://i.pinimg.com/736x/0e/78/10/0e7810a7646a3f786e59e2dbe3065726.jpg" // Right Column Image
+            alt="Right Column"
+            className="column-image"
+          />
+          Right Column Content
         </div>
       </div>
     </div>

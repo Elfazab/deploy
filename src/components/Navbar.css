@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #333; /* Dark background for the navbar */
+  background-color: #333333;
   padding: 15px 40px; /* Padding for the navbar */
   display: flex; /* Flexbox for alignment */
   justify-content: space-between; /* Space between brand and links */
@@ -46,6 +46,7 @@
   padding: 8px 15px; /* Padding for links */
   transition: background-color 0.3s ease; /* Smooth background change */
   border-radius: 5px; /* Rounded corners for links */
+  font-weight: bold;
 }
 
 .navbar-links a:hover {

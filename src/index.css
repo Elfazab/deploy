@@ -4,9 +4,15 @@ body {
   color: #e0e0e0;
   margin: 0;
   padding: 40px;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
-
+/* src/components/BankHeader.css */
+.bank-name {
+  color: white; /* Set bank name color to white */
+}
 h1,
+h3,
+p,
 h2 {
   color: #ffffff;
   text-align: center;
@@ -98,6 +104,30 @@ tr:hover {
   width: 50px;
   height: 50px;
   animation: spin 1s linear infinite;
+}
+
+/* src/index.css or src/components/BankExchangeRates.css */
+.bank-exchange-rates {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(300px, 1fr)
+  ); /* Responsive grid */
+  gap: 20px; /* Space between items */
+}
+
+.table-container {
+  background-color: #1d1d1dff; /* Dark background color */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px; /* Padding inside the card */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+  .bank-exchange-rates {
+    grid-template-columns: 1fr; /* Single column on mobile */
+  }
 }
 
 @keyframes spin {

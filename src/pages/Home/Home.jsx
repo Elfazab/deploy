@@ -1,11 +1,13 @@
+// src/pages/Home.js
 import React from "react";
 import { Link } from "react-router-dom";
 import CurrencyCalculator from "../../components/CurrencyCalculator";
-import Navbar from "../../components/Navbar"; // Use the correct import statement
-import "./Home.css"; // Import the CSS file
+import Navbar from "../../components/Navbar";
+import BankExchangeRates from "../../components/SelectedExchangeRates"; // Import the new component
+import "./Home.css";
 
 const Home = () => (
-  <div className="home-container">
+  <div>
     <Navbar />
     <h2 className="welcome-title">
       Welcome to the All Ethiopian Banks Currency Exchange App
@@ -14,13 +16,13 @@ const Home = () => (
       Check the latest exchange rates to make smarter choices for travel,
       business, or personal use.
     </p>
-
-    <CurrencyCalculator />
+    <BankExchangeRates /> {/* Add the bank exchange rates component */}
     <Link to="/exchange-rates" className="view-rates-link">
       <button className="view-rates-button" aria-label="View Exchange Rates">
-        View Exchange Rates
+        See All Exchange Rates
       </button>
     </Link>
+    <CurrencyCalculator />
   </div>
 );
 
