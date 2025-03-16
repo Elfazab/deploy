@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CurrencyCalculator from "../../components/CurrencyCalculator";
-import Navbar from "../../components/Navbar";
+
 import BankExchangeRates from "../../components/SelectedExchangeRates";
 import HeroSection from "./HeroSection";
 import "./Home.css";
 
 const MainHome = () => (
   <div>
-    <Navbar className="hero-navbar" /> {/* Navbar stays fixed */}
     <HeroSection />
     <div className="main-home-container">
       <div className="left-column">
