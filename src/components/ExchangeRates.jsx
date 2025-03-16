@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { BUCKET_URL, fetchExchangeRates } from "../services/supabaseService";
 import BankHeader from "./BankHeader";
 import LoadingSpinner from "./LoadingSpinner";
-import Navbar from "./Navbar";
 import RateTable from "./RateTable";
 
 const ExchangeRates = () => {
@@ -77,8 +76,6 @@ const ExchangeRates = () => {
 
   return (
     <div>
-      <Navbar />
-      <h1>Exchange Rates</h1>
       <div
         style={{
           display: "flex",
