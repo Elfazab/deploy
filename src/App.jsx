@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ExchangeRates from "./components/ExchangeRates";
 
 import CurrencyCalculator from "./components/CurrencyCalculator";
+import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import About from "./pages/About/About";
 import MainHome from "./pages/Home/MainHome";
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/exchange-rates" element={<ExchangeRates />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };

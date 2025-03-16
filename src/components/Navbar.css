@@ -4,8 +4,14 @@
   display: flex; /* Flexbox for alignment */
   justify-content: space-between; /* Space between brand and links */
   align-items: center; /* Center items vertically */
-  border-radius: 15px;
+  position: fixed; /* Fix the navbar to the top */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+
+  z-index: 1000; /* Ensure it's above other content */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  width: 100%;
+  margin: 0 auto;
 }
 
 .navbar-brand-container {
@@ -34,6 +40,7 @@
   list-style-type: none; /* Remove list bullets */
   display: flex; /* Flexbox for horizontal layout */
   gap: 20px; /* Space between links */
+  margin-right: 40px;
 }
 
 .navbar-links li {
@@ -44,6 +51,7 @@
   color: #ffffff; /* White text for links */
   text-decoration: none; /* Remove underline */
   padding: 8px 15px; /* Padding for links */
+
   transition: background-color 0.3s ease; /* Smooth background change */
   border-radius: 5px; /* Rounded corners for links */
   font-weight: bold;
@@ -86,4 +94,9 @@
   .navbar-links li {
     width: 100%; /* Full width for list items */
   }
+}
+
+/* Add some padding to the body to account for the fixed navbar */
+body {
+  padding-top: 70px; /* Adjust this value based on your navbar height */
 }
